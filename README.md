@@ -1,18 +1,11 @@
-# azure-pipelines-multiarch-docker
+# github-actions-multiarch-docker
 
-[![Docker Stars](https://img.shields.io/docker/stars/insightful/ubuntu-gambit.svg)](https://hub.docker.com/r/insightful/ubuntu-gambit)
-[![Docker Pulls](https://img.shields.io/docker/pulls/insightful/ubuntu-gambit.svg)](https://hub.docker.com/r/insightful/ubuntu-gambit)
-[![](https://images.microbadger.com/badges/image/insightful/ubuntu-gambit.svg)](https://microbadger.com/images/insightful/ubuntu-gambit "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/insightful/ubuntu-gambit.svg)](https://microbadger.com/images/insightful/ubuntu-gambit "Get your own version badge on microbadger.com")
-[![Build Status](https://dev.azure.com/ruicarmo/insightfulsystems/_apis/build/status/rcarmo.azure-pipelines-multiarch-docker?branchName=master)](https://dev.azure.com/ruicarmo/insightfulsystems/_build/latest?definitionId=5&branchName=master)
-
-This is a shim/template repo for an Azure DevOps pipeline to build multi-architecture images:
-
+This is a shim/template repo for a GitHub Actions pipeline to build multi-architecture images, converted from [azure-pipelines-multiarch-docker](https://github.com/rcarmo/azure-pipelines-multiarch-docker)
 ## Pipeline Structure
 
 At the Azure Pipelines level, this creates:
 
-![stages](https://github.com/rcarmo/azure-pipelines-multiarch-docker/blob/master/img/stages.png?raw=true)
+![stages](https://github.com/rcarmo/github-actions-multiarch-docker/blob/master/img/stages.png?raw=true)
 
 * One independent stage for each CPU architecture
 * A "wrap-up" stage that runs after all the others that builds and publishes the Docker manifest file
@@ -48,4 +41,4 @@ This is done because:
 
 * This does not cover multi-OS (Linux/Windows) images--the principles are the same, but that needs to split on the CI side to allow for different stages inside different VM agents.
 * This only uses Docker Hub (and requires `DOCKER_USERNAME` and `DOCKER_PASSWORD` to be set as private global variables for the pipeline--I recommend using linked variables at the organization level).
-* This does _not_ use the built-in Docker actions in Azure Pipelines (because they do not _yet_ support the experimental mode settings that are still required, as of June 2019, to build manifests).
+* This does _not_ use the built-in Docker actions in GitHub
