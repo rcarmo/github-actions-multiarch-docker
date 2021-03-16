@@ -1,6 +1,6 @@
 # github-actions-multiarch-docker
 
-This is a shim/template repo for a GitHub Actions pipeline to build multi-architecture images, converted from [azure-pipelines-multiarch-docker](https://github.com/rcarmo/azure-pipelines-multiarch-docker)
+This is a (WIP) shim/template repo for a GitHub Actions pipeline to build multi-architecture images, converted from [azure-pipelines-multiarch-docker](https://github.com/rcarmo/azure-pipelines-multiarch-docker)
 ## Pipeline Structure
 
 At the Azure Pipelines level, this creates:
