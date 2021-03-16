@@ -10,45 +10,53 @@ on:
 jobs:
   amd64:
     runs-on: ubuntu-latest
+    env:
+      arch: amd64
     steps: 
     - uses: actions/checkout@v1
     - name: amd64 (Intel/AMD)
-      env:
-        arch: amd64
       run: |
         make wrap-${{ env.arch }}
+    - name: build
+      run: |
         make build-${{ env.arch }}
-    - name: Push amd64
+    - name: push
       run: | 
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
         make push-${{ env.arch }}
         
   arm32v7:
     runs-on: ubuntu-latest
+    env:
+      arch: arm32v7
     steps:
     - uses: actions/checkout@v1
     - name: arm32v7 (Pi 2 and 3)
-      env:
-        arch: arm32v7
       run: |
+        make qemu
         make wrap-${{ env.arch }}
+    - name: build
+      run: |
         make build-${{ env.arch }}
-    - name: Push arm32v7
+    - name: push
       run: | 
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
         make push-${{ env.arch }}
 
   arm64v8:
     runs-on: ubuntu-latest
+    env:
+      arch: arm64v8
     steps:
     - uses: actions/checkout@v1
     - name: arm64v8 (Pi 3+ and other aarch64)
-      env:
-        arch: arm64v8
       run: |
+        make qemux
         make wrap-${{ env.arch }}
+    - name: build
+      run: |
         make build-${{ env.arch }}
-    - name: Push arm64v8
+    - name: push
       run: | 
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
         make push-${{ env.arch }}
