@@ -14,14 +14,14 @@ jobs:
     - uses: actions/checkout@v1
     - name: amd64 (Intel/AMD)
       env:
-      - ARCH: amd64
+      - arch: amd64
       run: |
-        make wrap-$(ARCH)
-        make build-$(ARCH)
+        make wrap-${{ env.arch }}
+        make build-${{ env.arch }}
     - name: Push amd64
       run: | 
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        make push-$(ARCH)
+        make push-${{ env.arch }}
         
   arm32v7:
     runs-on: ubuntu-latest
@@ -29,14 +29,14 @@ jobs:
     - uses: actions/checkout@v1
     - name: arm32v7 (Pi 2 and 3)
       env:
-      - ARCH: arm32v7
+      - arch: arm32v7
       run: |
-        make wrap-$(ARCH)
-        make build-$(ARCH)
+        make wrap-${{ env.arch }}
+        make build-${{ env.arch }}
     - name: Push arm32v7
       run: | 
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        make push-$(ARCH)
+        make push-${{ env.arch }}
 
   arm64v8:
     runs-on: ubuntu-latest
@@ -44,14 +44,14 @@ jobs:
     - uses: actions/checkout@v1
     - name: arm64v8 (Pi 3+ and other aarch64)
       env:
-      - ARCH: arm64v8
+      - arch: arm64v8
       run: |
-        make wrap-$(ARCH)
-        make build-$(ARCH)
+        make wrap-${{ env.arch }}
+        make build-${{ env.arch }}
     - name: Push arm64v8
       run: | 
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        make push-$(ARCH)
+        make push-${{ env.arch }}
 
   manifest:
     runs-on: ubuntu-latest
