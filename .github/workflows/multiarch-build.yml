@@ -51,7 +51,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: arm64v8 (Pi 3+ and other aarch64)
       run: |
-        make qemux
+        make qemu
         make wrap-${{ env.arch }}
     - name: build
       run: |
