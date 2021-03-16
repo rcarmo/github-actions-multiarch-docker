@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: amd64 (Intel/AMD)
       env:
-        ARCH: amd64
+      - ARCH: amd64
       run: |
         make wrap-$(ARCH)
         make build-$(ARCH)
@@ -29,7 +29,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: arm32v7 (Pi 2 and 3)
       env:
-        ARCH: arm32v7
+      - ARCH: arm32v7
       run: |
         make wrap-$(ARCH)
         make build-$(ARCH)
@@ -44,7 +44,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: arm64v8 (Pi 3+ and other aarch64)
       env:
-        ARCH: arm64v8
+      - ARCH: arm64v8
       run: |
         make wrap-$(ARCH)
         make build-$(ARCH)
