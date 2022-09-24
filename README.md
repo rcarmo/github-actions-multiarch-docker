@@ -3,7 +3,7 @@
 This is a (WIP) shim/template repo for a GitHub Actions pipeline to build multi-architecture images, converted from [azure-pipelines-multiarch-docker](https://github.com/rcarmo/azure-pipelines-multiarch-docker)
 ## Pipeline Structure
 
-At the Azure Pipelines level, this creates:
+At the Actions level, this creates:
 
 ![stages](https://github.com/rcarmo/github-actions-multiarch-docker/blob/master/img/stages.png?raw=true)
 
